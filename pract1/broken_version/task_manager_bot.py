@@ -37,7 +37,6 @@ def save_data(data: Dict[str, List[dict]]):
     with open(DATA_FILE, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
-
 class AddState(StatesGroup):
     waiting_for_text = State()
 
@@ -113,8 +112,6 @@ async def list_tasks(message: types.Message):
     user_id = str(message.from_user.id)
     text = format_tasks(user_id, data)
     await message.answer(text)
-
-
 
 @dp.message(F.text == "❌ Удалить задачу")
 async def delete_task(message: types.Message, state: FSMContext):
