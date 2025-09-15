@@ -125,7 +125,6 @@ async def delete_task(message: types.Message, state: FSMContext):
     await message.answer("Ваши задачи:\n" + text + "\n\nВведите номер задачи для удаления:", reply_markup=cancel_kb)
     await state.set_state(DeleteState.waiting_for_index)
 
-
 @dp.message(DeleteState.waiting_for_index)
 async def process_delete(message: types.Message, state: FSMContext):
     if message.text.lower() == "отмена":
